@@ -16,11 +16,11 @@ import java.util.Vector;
  */
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
-  private final Vector<String> resultBuffer;
+  private final Vector<Integer> resultBuffer;
 
   /** parameterized constructor */
   public Results() {
-    this.resultBuffer = new Vector<String>();
+    this.resultBuffer = new Vector<Integer>();
   }
 
   /**
@@ -35,7 +35,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     try {
       System.out.println("\nOutput: ");
       System.out.println("-----------------------------------");
-      for (String line : resultBuffer) {
+      for (Integer line : resultBuffer) {
         System.out.println(line);
       }
       System.out.println("-----------------------------------");
@@ -65,7 +65,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     FileWriter output_file = null;
     try {
       output_file = new FileWriter(output_filename);
-      for (String line : resultBuffer) {
+      for (Integer line : resultBuffer) {
         output_file.write(line + "\n");
       }
     } finally {
@@ -80,7 +80,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
    *
    * @param line - rotated line passed in WordRotator class
    */
-  public void store(String line) {
+  public void store(Integer line) {
     resultBuffer.add(line);
   }
 
@@ -89,7 +89,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
    *
    * @return vector of rotated string objects
    */
-  public Vector<String> getResultBuffer() {
+  public Vector<Integer> getResultBuffer() {
     return resultBuffer;
   }
 

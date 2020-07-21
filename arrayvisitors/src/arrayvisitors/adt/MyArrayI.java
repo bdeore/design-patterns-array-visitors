@@ -20,5 +20,5 @@ public interface MyArrayI {
 
   boolean contains(int element);
 
-
+  void print();
 }

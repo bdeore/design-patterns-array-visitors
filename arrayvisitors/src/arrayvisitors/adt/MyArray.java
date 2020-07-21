@@ -10,10 +10,7 @@ public class MyArray implements MyArrayI {
   private int currentCapacity;
 
   public MyArray() {
-    currentCapacity = 10;
-    currentSize = 0;
-    this.myArray = new int[currentCapacity];
-    this.capacityIncrement = -1;
+    this(10);
   }
 
   public MyArray(int initialCapacity) {
@@ -24,10 +21,8 @@ public class MyArray implements MyArrayI {
   }
 
   public MyArray(int initialCapacity, int capacityIncrement) {
-    currentCapacity = initialCapacity;
-    currentSize = 0;
+    this(initialCapacity);
     this.capacityIncrement = capacityIncrement;
-    this.myArray = new int[currentCapacity];
   }
 
   @Override

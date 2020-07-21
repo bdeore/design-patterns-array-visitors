@@ -2,8 +2,8 @@ package arrayvisitors.driver;
 
 import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayI;
-import arrayvisitors.adt.MyArrayList;
-import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.visitors.PopulateMyArrayVisitor;
+import java.io.IOException;
 
 /** @author Bhagwan Deore */
 public class Driver {
@@ -22,40 +22,29 @@ public class Driver {
       System.exit(0);
     }
 
-    // testing myArrayList
-    MyArrayI array = new MyArray();
+    try {
 
-    array.add(10);
-    array.add(20);
-    array.add(30);
-    array.add(40);
-    array.add(50);
-    array.add(60);
-    array.add(70);
-    array.add(80);
-    array.add(90);
-    array.add(100);
+      PopulateMyArrayVisitor array_0_visitor = new PopulateMyArrayVisitor(args[0]);
+      PopulateMyArrayVisitor array_1_visitor = new PopulateMyArrayVisitor(args[1]);
 
-    System.out.println("capacity : " + array.capacity());
-    System.out.println("size : " + array.size());
-    array.print();
+      MyArrayI array_0 = new MyArray();
+      MyArrayI array_1 = new MyArray();
 
-    System.out.println("==============================");
+      array_0.accept(array_0_visitor);
+      array_1.accept(array_1_visitor);
 
-    MyArrayI pArray = new MyArray(50);
+      System.out.println("capacity : " + array_0.capacity());
+      System.out.println("size : " + array_0.size());
+      array_0.print();
 
-    for (int i = 1; i <= 50; i++) {
-      pArray.add(i);
+      System.out.println("capacity : " + array_1.capacity());
+      System.out.println("size : " + array_1.size());
+      array_1.print();
+
+    } catch (IOException e) {
+      System.out.println(e);
+      System.out.println("Terminating Program");
+      System.exit(1);
     }
-
-    System.out.println("capacity : " + pArray.capacity());
-    System.out.println("size : " + pArray.size());
-    pArray.print();
-
-    MyArrayListI newList = new MyArrayList();
-    newList.add(pArray);
-    newList.add(array);
-
-    newList.get(1).print();
   }
 }

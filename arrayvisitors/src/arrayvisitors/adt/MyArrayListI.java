@@ -1,6 +1,9 @@
 package arrayvisitors.adt;
 
-public interface MyArrayListI {
+import arrayvisitors.visitors.Element;
+import arrayvisitors.visitors.Visitor;
+
+public interface MyArrayListI extends Element {
 
   void add(MyArrayI element);
 
@@ -13,4 +16,6 @@ public interface MyArrayListI {
   void ensureCapacity(int minCapacity);
 
   void clear();
+
+  void accept(Visitor v);
 }

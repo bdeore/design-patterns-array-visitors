@@ -1,5 +1,6 @@
 package arrayvisitors.adt;
 
+import arrayvisitors.visitors.Visitor;
 import java.util.Arrays;
 
 public class MyArray implements MyArrayI {
@@ -26,6 +27,11 @@ public class MyArray implements MyArrayI {
   }
 
   @Override
+  public void accept(Visitor v) {
+    v.visit(this);
+  }
+
+  @Override
   public void add(int element) {
     if (currentSize < currentCapacity) {
       myArray[currentSize] = element;
@@ -37,7 +43,7 @@ public class MyArray implements MyArrayI {
               : currentCapacity + capacityIncrement;
 
       ensureCapacity(newCapacity);
-      System.out.println("Size Exceeded");
+      System.out.println("Size Exceeded :: New capacity : " + newCapacity);
       add(element);
     }
   }

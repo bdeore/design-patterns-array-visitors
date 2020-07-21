@@ -1,6 +1,9 @@
 package arrayvisitors.adt;
 
-public interface MyArrayI {
+import arrayvisitors.visitors.Element;
+import arrayvisitors.visitors.Visitor;
+
+public interface MyArrayI extends Element {
 
   void add(int element);
 
@@ -21,4 +24,6 @@ public interface MyArrayI {
   boolean contains(int element);
 
   void print();
+
+  void accept(Visitor v);
 }

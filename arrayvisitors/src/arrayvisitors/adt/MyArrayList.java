@@ -1,5 +1,7 @@
 package arrayvisitors.adt;
 
+import arrayvisitors.visitors.Visitor;
+
 public class MyArrayList implements MyArrayListI {
 
   private int capacityIncrement;
@@ -22,6 +24,9 @@ public class MyArrayList implements MyArrayListI {
     this(initialCapacity);
     this.capacityIncrement = capacityIncrement;
   }
+
+  @Override
+  public void accept(Visitor v) {}
 
   @Override
   public void add(MyArrayI element) {

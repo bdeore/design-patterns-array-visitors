@@ -1,5 +1,3 @@
 package arrayvisitors.visitors;
 
-public class Element {
-
-}
+public interface Element {}

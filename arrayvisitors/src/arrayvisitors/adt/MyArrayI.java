@@ -15,4 +15,10 @@ public interface MyArrayI {
   void ensureCapacity(int minCapacity);
 
   void clear();
+
+  int indexOf(int element);
+
+  boolean contains(int element);
+
+
 }

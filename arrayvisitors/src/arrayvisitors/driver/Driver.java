@@ -19,10 +19,7 @@ public class Driver {
       System.exit(0);
     }
 
-    System.out.println("hello world!");
-
     // Testing myArray
-
     MyArray array = new MyArray();
 
     array.add(10);
@@ -35,13 +32,70 @@ public class Driver {
     array.add(80);
     array.add(90);
     array.add(100);
+
+    System.out.println("capacity : " + array.capacity());
+
     array.add(10);
     array.add(10);
+
+    System.out.println("capacity : " + array.capacity());
+    System.out.println("size : " + array.size());
 
     System.out.println(array.get(0));
     System.out.println(array.get(4));
 
     System.out.println("==============================");
     array.print();
+
+    array.clear();
+
+    array.add(50);
+    array.add(60);
+    array.add(70);
+    array.add(80);
+    array.add(90);
+    array.add(100);
+
+    array.print();
+    System.out.println("capacity : " + array.capacity());
+    System.out.println("size : " + array.size());
+
+    System.out.println(array.indexOf(50));
+    System.out.println(array.indexOf(70));
+    System.out.println(array.indexOf(100));
+
+    array.remove(100);
+    array.print();
+
+    array.remove(50);
+    array.print();
+
+    array.remove(70);
+    array.print();
+
+    System.out.println(array.contains(70));
+    System.out.println(array.contains(60));
+
+    // testing parameterized constructors
+
+    // with specified initial capacity
+    MyArray pArray = new MyArray(50);
+    System.out.println(pArray.capacity());
+    for (int i = 1; i <= 50; i++) {
+      pArray.add(i);
+    }
+    pArray.print();
+
+    // with specified initial capacity and increment
+    MyArray test = new MyArray(5, 20);
+    System.out.println("capacity : " + test.capacity());
+    System.out.println("size : " + test.size());
+    for (int i = 1; i <= 6; i++) {
+      test.add(i);
+    }
+    System.out.println("capacity : " + test.capacity());
+    System.out.println("size : " + test.size());
+
+    System.out.println(test.toString());
   }
 }

@@ -1,11 +1,11 @@
 package arrayvisitors.visitors;
 
-import arrayvisitors.adt.MyArray;
-import arrayvisitors.adt.MyArrayList;
+import arrayvisitors.adt.MyArrayI;
+import arrayvisitors.adt.MyArrayListI;
 
 public interface Visitor {
 
-  void visit(MyArray myArray);
+  void visit(MyArrayI myArray);
 
-  void visit(MyArrayList myArrayList);
+  void visit(MyArrayListI myArrayList);
 }

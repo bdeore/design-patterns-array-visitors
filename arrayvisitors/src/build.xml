@@ -49,7 +49,8 @@
       <arg value="${input1}"/> <!-- input file 1 -->
       <arg value="${input2}"/> <!-- input file 2 -->
       <arg value="${commonintsout}"/> <!-- common ints output file -->
-      <arg value="${missingintsout}"/> <!-- missing ints output file -->
+      <arg value="${missingintsout1}"/> <!-- missing ints output file for array 1-->
+      <arg value="${missingintsout2}"/> <!-- missing ints output file for array 2 -->
       <arg value="${debug}"/> <!-- debug file -->
     </java>
   </target>

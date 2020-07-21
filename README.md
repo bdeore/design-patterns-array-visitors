@@ -26,7 +26,7 @@ The above command compiles your code and generates .class files inside the BUILD
 ## Instructions to run:
 
 ```commandline
-ant -buildfile arrayvisitors/src/build.xml run -Dinput1="input_1.txt" -Dinput2="input_2.txt" -Dcommonintsout="common_ints_out.txt" -Dmissingintsout="missing_ints_out.txt" -Ddebug="debug_log.txt"
+ant -buildfile arrayvisitors/src/build.xml run -Dinput1="input_1.txt" -Dinput2="input_2.txt" -Dcommonintsout="common_ints_out.txt" -Dmissingintsout1="array1_missing_ints_out.txt" -Dmissingintsout2="array2_missing_ints_out.txt" -Ddebug="debug_log.txt"
 ```
 Note: Arguments accept the absolute path of the files.
 

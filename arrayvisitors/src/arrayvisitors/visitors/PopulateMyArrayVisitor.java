@@ -1,8 +1,8 @@
 package arrayvisitors.visitors;
 
 import arrayvisitors._exceptions.EmptyInputFileException;
-import arrayvisitors.adt.MyArray;
-import arrayvisitors.adt.MyArrayList;
+import arrayvisitors.adt.MyArrayI;
+import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.FileProcessor;
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class PopulateMyArrayVisitor implements Visitor {
   }
 
   @Override
-  public void visit(MyArray myArray) {
+  public void visit(MyArrayI myArray) {
     int count = 0;
     try {
       String line = fp.poll();
@@ -45,7 +45,7 @@ public class PopulateMyArrayVisitor implements Visitor {
   }
 
   @Override
-  public void visit(MyArrayList myArrayList) {
+  public void visit(MyArrayListI myArrayList) {
     // throw not supported exception
   }
 }

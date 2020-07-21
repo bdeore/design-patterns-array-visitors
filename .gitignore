@@ -12,3 +12,6 @@
 /arrayvisitors/src/BUILD/
 /input_1.txt
 /input_2.txt
+/common_ints_out.txt
+/array1_missing_ints_out.txt
+/array2_missing_ints_out.txt

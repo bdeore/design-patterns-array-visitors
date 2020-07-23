@@ -1,5 +1,6 @@
 package arrayvisitors.visitors;
 
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.Results;
@@ -22,12 +23,14 @@ public class MissingIntsVisitor implements Visitor {
 
     for (int i = 0; i < 100; i++) {
       if (commonInts[i] != 1) {
-        System.out.println("i: " + i + " " + commonInts[i]);
-        rs.store(i);
+        String num = (i < 10 ? "0" : "") + i;
+        rs.store(num);
       }
     }
   }
 
   @Override
-  public void visit(MyArrayListI myArrayList) {}
+  public void visit(MyArrayListI myArrayList) throws InvalidADTException {
+    throw new InvalidADTException();
+  }
 }

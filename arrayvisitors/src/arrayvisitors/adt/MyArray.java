@@ -1,9 +1,10 @@
 package arrayvisitors.adt;
 
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.visitors.Visitor;
 import java.util.Arrays;
 
-public class MyArray implements MyArrayI {
+public class MyArray implements MyArrayI, Cloneable {
 
   private int capacityIncrement;
   private int[] myArray;
@@ -27,7 +28,7 @@ public class MyArray implements MyArrayI {
   }
 
   @Override
-  public void accept(Visitor v) {
+  public void accept(Visitor v) throws InvalidADTException {
     v.visit(this);
   }
 
@@ -141,8 +142,7 @@ public class MyArray implements MyArrayI {
   @Override
   protected Object clone() throws CloneNotSupportedException {
     MyArray copy = (MyArray) super.clone();
-    int[] array = new int[currentCapacity];
-    copy.setMyArray(array);
+    copy.myArray = new int[this.currentCapacity];
     copy.currentSize = 0;
 
     for (int i = 0; i < this.currentSize; i++) {

@@ -1,6 +1,7 @@
 package arrayvisitors.visitors;
 
 import arrayvisitors._exceptions.EmptyInputFileException;
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.FileProcessor;
@@ -42,10 +43,14 @@ public class PopulateMyArrayVisitor implements Visitor {
       System.out.println("Terminating Program");
       System.exit(1);
     }
+
+    System.out.println("capacity : " + myArray.capacity());
+    System.out.println("size : " + myArray.size());
+    myArray.print();
   }
 
   @Override
-  public void visit(MyArrayListI myArrayList) {
-    // throw not supported exception
+  public void visit(MyArrayListI myArrayList) throws InvalidADTException {
+    throw new InvalidADTException();
   }
 }

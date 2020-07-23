@@ -1,5 +1,6 @@
 package arrayvisitors.adt;
 
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.visitors.Element;
 import arrayvisitors.visitors.Visitor;
 
@@ -17,5 +18,5 @@ public interface MyArrayListI extends Element {
 
   void clear();
 
-  void accept(Visitor v);
+  void accept(Visitor v) throws InvalidADTException;
 }

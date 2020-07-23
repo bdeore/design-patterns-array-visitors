@@ -1,8 +1,10 @@
 package arrayvisitors.adt;
 
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.visitors.Visitor;
+import java.util.Arrays;
 
-public class MyArrayList implements MyArrayListI {
+public class MyArrayList implements MyArrayListI, Cloneable {
 
   private int capacityIncrement;
   private MyArray[] myArrayList;
@@ -26,7 +28,7 @@ public class MyArrayList implements MyArrayListI {
   }
 
   @Override
-  public void accept(Visitor v) {
+  public void accept(Visitor v) throws InvalidADTException {
     v.visit(this);
   }
 
@@ -81,5 +83,48 @@ public class MyArrayList implements MyArrayListI {
     this.myArrayList = null;
     this.myArrayList = new MyArray[currentCapacity];
     currentSize = 0;
+  }
+
+  public MyArray getClone(MyArrayI array) throws CloneNotSupportedException {
+    return (MyArray) ((MyArray) array).clone();
+  }
+
+  public void setMyArray(MyArrayI array, int index) {
+    this.myArrayList[index] = (MyArray) array;
+  }
+
+  public MyArray[] getMyArrayList() {
+    return myArrayList;
+  }
+
+  public void setCapacityIncrement(int capacityIncrement) {
+    this.capacityIncrement = capacityIncrement;
+  }
+
+  @Override
+  protected void finalize() throws Throwable {}
+
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    MyArrayList copy = (MyArrayList) super.clone();
+    copy.myArrayList = new MyArray[this.currentCapacity];
+
+    for (int i = 0; i < this.currentSize; i++) {
+      copy.add((MyArrayI) ((this.myArrayList[i]).clone()));
+    }
+    return copy;
+  }
+
+  @Override
+  public String toString() {
+    return "MyArrayList : "
+        + "capacityIncrement="
+        + capacityIncrement
+        + ", myArrayList="
+        + Arrays.toString(myArrayList)
+        + ", currentSize="
+        + currentSize
+        + ", currentCapacity="
+        + currentCapacity;
   }
 }

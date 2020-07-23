@@ -1,6 +1,7 @@
 package arrayvisitors.driver;
 
 import arrayvisitors._exceptions.EmptyInputFileException;
+import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayList;
@@ -32,48 +33,68 @@ public class Driver {
     try {
 
       // Test for PopulateMyArrayVisitor
-      Visitor array_0_visitor = new PopulateMyArrayVisitor(args[0]);
-      Visitor array_1_visitor = new PopulateMyArrayVisitor(args[1]);
+      Visitor populateArrayVisitor_1 = new PopulateMyArrayVisitor(args[0]);
+      Visitor populateArrayVisitor_2 = new PopulateMyArrayVisitor(args[1]);
 
-      MyArrayI array_0 = new MyArray();
-      MyArrayI array_1 = new MyArray();
+      MyArrayI myArray1 = new MyArray();
+      MyArrayI myArray2 = new MyArray();
 
-      array_0.accept(array_0_visitor);
-      array_1.accept(array_1_visitor);
-
-      System.out.println("capacity : " + array_0.capacity());
-      System.out.println("size : " + array_0.size());
-      array_0.print();
-
-      System.out.println("capacity : " + array_1.capacity());
-      System.out.println("size : " + array_1.size());
-      array_1.print();
+      myArray1.accept(populateArrayVisitor_1);
+      myArray2.accept(populateArrayVisitor_2);
 
       // Test for CommonIntsVisitor
       MyArrayListI arrayList = new MyArrayList();
-      arrayList.add(array_0);
-      arrayList.add(array_1);
+      arrayList.add(myArray1);
+      arrayList.add(myArray2);
 
       Results rs = new Results();
+
       Visitor commonIntsVisitor = new CommonIntsVisitor(rs);
 
       arrayList.accept(commonIntsVisitor);
       rs.write(args[2]);
+      rs.clearBuffer();
 
       // Test for MissingIntsVisitor
-      rs = new Results();
       Visitor missingIntsVisitor = new MissingIntsVisitor(rs);
-      array_0.accept(missingIntsVisitor);
+
+      myArray1.accept(missingIntsVisitor);
       rs.write(args[3]);
+      rs.clearBuffer();
 
-      rs = new Results();
-      missingIntsVisitor = new MissingIntsVisitor(rs);
-      array_1.accept(missingIntsVisitor);
+      myArray2.accept(missingIntsVisitor);
       rs.write(args[4]);
+      rs.clearBuffer();
 
-    } catch (IOException | EmptyInputFileException e) {
+      // todo
+
+      // test for the MyArray cloning feature
+      MyArray testCloning = ((MyArrayList) arrayList).getClone(myArray1);
+      testCloning.add(98);
+      testCloning.add(97);
+
+      System.out.println("original unmodified MyArray");
+      myArray1.print();
+
+      System.out.println("Cloned and modified MyArray");
+      testCloning.print();
+
+      // test for the MyArrayList cloning feature
+      MyArrayList testCloningList = (MyArrayList) ((MyArrayList) arrayList).clone();
+      testCloningList.setMyArray(testCloning, 0);
+
+      System.out.println("Original and unmodified MyArrayList - alterations don't affect original");
+      arrayList.get(0).print();
+
+      System.out.println("Cloned and modified MyArrayList");
+      testCloningList.get(0).print();
+
+    } catch (IOException
+        | EmptyInputFileException
+        | CloneNotSupportedException
+        | InvalidADTException e) {
       System.out.println(e);
-      System.out.println("Terminating Program");
+      System.out.println("(Driver Class) Terminating Program");
       System.exit(1);
     }
   }

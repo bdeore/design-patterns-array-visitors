@@ -93,6 +93,11 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     return resultBuffer;
   }
 
+  /**
+   * method to clear buffer (this simplified variable management in driver code)
+   *
+   * <p>deletes the old vector and creates new one
+   */
   public void clearBuffer() {
     this.resultBuffer = new Vector<>();
   }

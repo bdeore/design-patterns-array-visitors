@@ -5,14 +5,27 @@ import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.Results;
 
+/** visitor to find common integers among two arrays */
 public class CommonIntsVisitor implements Visitor {
 
   private final Results rs;
 
+  /**
+   * parameterized constructor
+   *
+   * @param rs results object to be used
+   */
   public CommonIntsVisitor(Results rs) {
     this.rs = rs;
   }
 
+  /**
+   * visit method to find common integers
+   *
+   * <p>for explanation about the algorithm and time complexity see README.md
+   *
+   * @param myArrayList MyArrayList object
+   */
   @Override
   public void visit(MyArrayListI myArrayList) {
     int[] commonInts = new int[100];
@@ -35,9 +48,24 @@ public class CommonIntsVisitor implements Visitor {
       }
     }
   }
-
+  /**
+   * invalid method
+   *
+   * @param myArray
+   * @throws InvalidADTException exception is thrown if visitor is applied on unsupported ADT
+   */
   @Override
   public void visit(MyArrayI myArray) throws InvalidADTException {
     throw new InvalidADTException();
+  }
+
+  /**
+   * toString method for debugging
+   *
+   * @return String
+   */
+  @Override
+  public String toString() {
+    return "CommonIntsVisitor : " + "rs=" + rs;
   }
 }

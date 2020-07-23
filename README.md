@@ -37,9 +37,8 @@ Note: Arguments accept the absolute path of the files.
 ADT Design:
 
 
-MyArray: api is very close to that of the vector. I have only implemented the necessary methods.
-
-MyArrayList: api is very small as other operations are NOT needed for this assignment.
+MyArray: API is very close to that of the vector. I have only implemented the necessary methods.
+MyArrayList: API is very small as all the MyArray operations are NOT needed for this assignment.
 
 
 ```commandline
@@ -53,7 +52,7 @@ looping through reference array to store result - O(100)
 so, Time Complexity: O(m + n)
 ```
 
-Algorithm Design:
+**Algorithm Design:**
 
 To find missing integers and common integers, I'm using a simple array data structure. 
 

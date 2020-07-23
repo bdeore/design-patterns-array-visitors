@@ -4,6 +4,7 @@ import arrayvisitors._exceptions.InvalidADTException;
 import arrayvisitors.visitors.Element;
 import arrayvisitors.visitors.Visitor;
 
+/** Interface to define API for MyArrayList class */
 public interface MyArrayListI extends Element {
 
   void add(MyArrayI element);

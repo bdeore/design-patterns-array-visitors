@@ -6,6 +6,7 @@ import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayList;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.util.MyLogger;
 import arrayvisitors.util.Results;
 import arrayvisitors.visitors.CommonIntsVisitor;
 import arrayvisitors.visitors.MissingIntsVisitor;
@@ -32,32 +33,46 @@ public class Driver {
 
     try {
 
-      // Test for PopulateMyArrayVisitor
+      /*
+       * creating two instances of PopulateMyArrayVisitor. input file names are passed as the
+       * argument to the constructor instance of File Processor is created internally.  */
       Visitor populateArrayVisitor_1 = new PopulateMyArrayVisitor(args[0]);
       Visitor populateArrayVisitor_2 = new PopulateMyArrayVisitor(args[1]);
 
+      /*
+       * creating two MyArray objects to store elements from these input files
+       * MyArray API is very similar to that of an vector
+       */
       MyArrayI myArray1 = new MyArray();
       MyArrayI myArray2 = new MyArray();
 
+      /*
+       *  PopulateMyArrayVisitor uses a while loop to read each element one line at a time and
+       *  stores it in internal dynamic array.
+       */
       myArray1.accept(populateArrayVisitor_1);
       myArray2.accept(populateArrayVisitor_2);
 
-      // Test for CommonIntsVisitor
+      /*
+       * API for MyArrayList is very small as I have only included the necessary methods.
+       * add method is used to store the populated MyArray objects in arrayList
+       */
       MyArrayListI arrayList = new MyArrayList();
       arrayList.add(myArray1);
       arrayList.add(myArray2);
 
+      // Instance of Results class to store output of visitors and write to the files
+      // clearBuffer method deletes the old internal ArrayList and creates a new one.
       Results rs = new Results();
 
+      // check README.md for details of algorithm used by CommonIntsVisitor and Time Complexity
       Visitor commonIntsVisitor = new CommonIntsVisitor(rs);
-
       arrayList.accept(commonIntsVisitor);
       rs.write(args[2]);
       rs.clearBuffer();
 
-      // Test for MissingIntsVisitor
+      // check README.md for details of algorithm used by MissingIntsVisitor and Time Complexity
       Visitor missingIntsVisitor = new MissingIntsVisitor(rs);
-
       myArray1.accept(missingIntsVisitor);
       rs.write(args[3]);
       rs.clearBuffer();
@@ -66,9 +81,13 @@ public class Driver {
       rs.write(args[4]);
       rs.clearBuffer();
 
-      // todo
+      /* MyLogger is a Singleton class which maintains a buffer for debug messages */
+      MyLogger.getInstance().write(args[5]);
 
-      // test for the MyArray cloning feature
+      // This code is for testing clone methods. To Check: make clone method in MyArrayList class
+      // public and add CloneNotSupportedException to the catch clause below
+
+      /*
       MyArray testCloning = ((MyArrayList) arrayList).getClone(myArray1);
       testCloning.add(98);
       testCloning.add(97);
@@ -88,14 +107,17 @@ public class Driver {
 
       System.out.println("Cloned and modified MyArrayList");
       testCloningList.get(0).print();
+      */
 
-    } catch (IOException
-        | EmptyInputFileException
-        | CloneNotSupportedException
-        | InvalidADTException e) {
+    } catch (IOException | EmptyInputFileException | InvalidADTException e) {
       System.out.println(e);
       System.out.println("(Driver Class) Terminating Program");
       System.exit(1);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "Driver Class";
   }
 }

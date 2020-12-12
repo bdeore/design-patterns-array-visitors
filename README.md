@@ -1,13 +1,11 @@
-# CSX42: Assignment 4
-**Name:** Bhagwan Sanjay Deore
------------------------------------------------------------------------
+## Array Manipulations using Visitor Pattern
 
-Following are the commands, and the instructions to run ANT on your project.
+Following are the commands & the instructions to run the project using ANT.
 
 
 Note: build.xml is present in [arrayvisitors/src](./arrayvisitors/src/) folder.
 
-## Instruction to clean:
+### Instruction to clean:
 
 ```commandline
 ant -buildfile arrayvisitors/src/build.xml clean
@@ -16,14 +14,14 @@ ant -buildfile arrayvisitors/src/build.xml clean
 Description: It cleans up all the .class files that were generated when you
 compiled your code.
 
-## Instructions to compile:
+### Instructions to compile:
 
 ```commandline
 ant -buildfile arrayvisitors/src/build.xml all
 ```
 The above command compiles your code and generates .class files inside the BUILD folder.
 
-## Instructions to run:
+### Instructions to run:
 
 ```commandline
 ant -buildfile arrayvisitors/src/build.xml run -Dinput1="input_1.txt" -Dinput2="input_2.txt" -Dcommonintsout="common_ints_out.txt" -Dmissingintsout1="array1_missing_ints_out.txt" -Dmissingintsout2="array2_missing_ints_out.txt" -Ddebug="debug_log.txt"
@@ -31,7 +29,7 @@ ant -buildfile arrayvisitors/src/build.xml run -Dinput1="input_1.txt" -Dinput2="
 Note: Arguments accept the absolute path of the files.
 
 
-## Description:
+### Description:
 
 
 ADT Design:
@@ -78,15 +76,7 @@ b) MissingIntsVisitor :
     e.g. if number in the array is 11, set element at 11th position in reference array to 1. so, array[11] = 1
 3) go through all the elements in reference array and save the indices where value is 1.
     since, 11 was present in the array, value at 11th position in reference array will be 1 and number 11 will be stored in results.
-      
 
-## Academic Honesty statement:
-
-"I have done this assignment completely on my own. I have not copied
-it, nor have I given my solution to anyone else. I understand that if
-I am involved in plagiarism or cheating an official form will be
-submitted to the Academic Honesty Committee of the Watson School to
-determine the action that needs to be taken. "
 
 Date:  July 15, 2020
 
